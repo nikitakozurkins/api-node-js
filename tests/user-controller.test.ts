@@ -4,30 +4,30 @@ let baseURL: string = 'http://localhost:3000/users';
 
 test.describe('User management API', () => {
 
-    test('GET / - should return empty when no users', async ({ request }) => {
+    test('all users: should return empty array when no users', async ({ request }) => {
         const response = await request.get(`${baseURL}`);
         expect(response.status()).toBe(200);
         const responseBody = await response.text()
         expect(responseBody).toBe('[]');
     });
 
-    test('GET /:id - should return a user by ID', async ({ request }) => {
+    test('find user: should return a user by ID', async ({ request }) => {
 
     });
 
-    test('GET /:id - should return 404 if user not found', async ({ request }) => {
+    test('find user: should return 404 if user not found', async ({ request }) => {
 
     });
 
-    test('POST / - should add a new user', async ({ request }) => {
+    test('create user: should add a new user', async ({ request }) => {
 
     });
 
-    test('DELETE /:id - should delete a user by ID', async ({ request }) => {
+    test('delete user: should delete a user by ID', async ({ request }) => {
 
     });
 
-    test('DELETE /:id - should return 404 if user not found', async ({ request }) => {
+    test('delete user: should return 404 if user not found', async ({ request }) => {
 
     });
 
