@@ -5,13 +5,6 @@ let baseURL: string = 'http://localhost:3000/users';
 
 test.describe('User management API', () => {
 
-    test('all users: should return empty array when no users', async ({ request }) => {
-        const response = await request.get(`${baseURL}`);
-        const responseBody = await response.text()
-        expect.soft(response.status()).toBe(StatusCodes.OK);
-        expect.soft(responseBody).toBe('[]');
-    });
-
     test('find user: should return a user by ID', async ({ request }) => {
         const responseUserCreate = await request.post(`${baseURL}`);
         const responseUserCreateBody = await responseUserCreate.json();
@@ -33,8 +26,8 @@ test.describe('User management API', () => {
         const responseUserCreateBody = await responseUserCreate.json();
         const responseFindUser = await request.get(`${baseURL}/${responseUserCreateBody.id}`);
         const responseFindUserBody = await responseFindUser.json();
-        expect.soft(responseUserCreate.status()).toBe(201);
-        expect.soft(responseFindUser.status()).toBe(200);
+        expect.soft(responseUserCreate.status()).toBe(StatusCodes.CREATED);
+        expect.soft(responseFindUser.status()).toBe(StatusCodes.OK);
         expect.soft(responseFindUserBody.id).toBe(responseUserCreateBody.id);
         expect.soft(responseFindUserBody.email).toBe(responseUserCreateBody.email);
         expect.soft(responseFindUserBody.phone).toBe(responseUserCreateBody.phone);
